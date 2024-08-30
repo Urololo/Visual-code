@@ -46,7 +46,37 @@ document.getElementById('prime-display').addEventListener('click', function() {
     }
 });
 
-// Actualiza el contenido mostrado
+// Evento para avanzar 10 números primos con la barra espaciadora
+document.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+        e.preventDefault();
+        if (currentIndex + 10 < primes.length) {
+            currentIndex += 10;
+        } else {
+            for (let i = 0; i < 10; i++) {
+                primes.push(findNextPrime(primes[primes.length - 1]));
+            }
+            currentIndex += 10;
+        }
+        updateDisplay();
+    }
+});
+
+// Actualiza el contenido mostrado y el contador de posición
 function updateDisplay() {
-    document.getElementById('prime-display').textContent = primes[currentIndex];
+    const primeDisplay = document.getElementById('prime-display');
+    const primeCounter = document.getElementById('prime-counter');
+
+    if (currentIndex >= 0 && currentIndex < primes.length) {
+        const prime = primes[currentIndex];
+        const position = currentIndex + 1;
+        primeDisplay.textContent = prime;
+        primeCounter.textContent = `Primo ${position}`;
+    } else {
+        primeDisplay.textContent = "No hay más números primos.";
+        primeCounter.textContent = "";
+    }
 }
+
+// Inicialización
+updateDisplay();

@@ -1,10 +1,11 @@
 body {
     background-color: black;
     color: white;
-    font-family: 'Arial', sans-serif;
-    font-size: 100px;
+    font-family: 'Josefin Sans', sans-serif; /* Usar la fuente Josefin Sans */
+    font-size: 200px;
     font-weight: bold;
     display: flex;
+    flex-direction: column; /* Para apilar el contador y el número primo */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -14,4 +15,11 @@ body {
 #prime-display {
     cursor: pointer;
     user-select: none;
+    padding: 50px; /* Aumentar el área clicable */
+    text-align: center;
+}
+
+#prime-counter {
+    font-size: 40px; /* Tamaño más pequeño para el contador */
+    margin-bottom: 20px; /* Espacio entre el contador y el número primo */
 }
